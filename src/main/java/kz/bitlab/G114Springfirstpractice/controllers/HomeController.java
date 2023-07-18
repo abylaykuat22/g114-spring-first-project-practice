@@ -1,6 +1,8 @@
 package kz.bitlab.G114Springfirstpractice.controllers;
 
+import java.util.List;
 import kz.bitlab.G114Springfirstpractice.db.DBManager;
+import kz.bitlab.G114Springfirstpractice.enums.ItemStatus;
 import kz.bitlab.G114Springfirstpractice.models.Item;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +21,10 @@ public class HomeController {
 
   @GetMapping("details/{id}")
   public String detailsPage(@PathVariable Long id, Model model) {
+    var countries = List.of("CHINA", "USA", "Finland", "Japan", "Korea", "France", "Italy");
+
+    model.addAttribute("statuses", ItemStatus.values());
+    model.addAttribute("countries", countries);
     model.addAttribute("item", DBManager.getItemById(id));
     return "details";
   }
@@ -32,7 +38,7 @@ public class HomeController {
   @PostMapping("edit-item/{id}")
   public static String editItem(@PathVariable Long id, Item item) {
     DBManager.editItem(id, item);
-    return "redirect:/details/"+id;
+    return "redirect:/details/" + id;
   }
 
   @PostMapping("delete-item/{id}")
