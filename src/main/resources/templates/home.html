@@ -1,14 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/main.html">
 <head>
-  <link type="text/css" rel="stylesheet" th:href="@{'/css/bootstrap.min.css'}">
-  <script type="text/javascript" th:src="@{'/js/bootstrap.bundle.js'}"></script>
-  <title>Bitlab Shop</title>
+  <title>HOME PAGE</title>
 </head>
-<body>
-<div th:insert="~{navbar}"></div>
-
-<div class="container col-8 mx-auto">
+<div layout:fragment="content">
   <!-- Button trigger modal -->
   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addItemModal">
     ADD ITEM
@@ -63,5 +59,8 @@
     </div>
   </div>
 </form>
-</body>
+</div>
+<div layout:fragment="others">
+  <h1>Здесь могла бы быть ваша реклама!!!!!</h1>
+</div>
 </html>

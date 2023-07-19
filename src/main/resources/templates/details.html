@@ -1,14 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-  <link type="text/css" rel="stylesheet" th:href="@{'/css/bootstrap.min.css'}">
-  <script type="text/javascript" th:src="@{'/js/bootstrap.bundle.js'}"></script>
-  <title>Bitlab Shop</title>
-</head>
-<body>
-<div th:insert="~{navbar}"></div>
-
-<div class="container col-8 mx-auto">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/main2.html">
+<div layout:fragment="content">
   <div th:if="${item.amount == 0}" class="alert alert-warning alert-dismissible fade show" role="alert">
     <strong>Товара нет в наличии!</strong>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -105,5 +98,5 @@
     </div>
   </div>
 </form>
-</body>
+</div>
 </html>
