@@ -30,17 +30,17 @@
       </div>
     </div>
   </div>
-</div>
 <!-- Modal -->
-<form th:action="${'/edit-item/'+item.id}" method="post">
-  <div class="modal fade" id="editItemModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<form action="/edit-item" method="post">
+  <div class="modal fade" id="editItemModal" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel1">Modal title</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
+          <input type="hidden" name="id" th:value="${item.id}">
           <div class="mb-3">
             <label  class="form-label">Name</label>
             <input th:value="${item.name}" name="name" type="text" class="form-control">
@@ -98,5 +98,6 @@
     </div>
   </div>
 </form>
+</div>
 </div>
 </html>

@@ -6,9 +6,51 @@
 </head>
 <div layout:fragment="content">
   <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addItemModal">
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
     ADD ITEM
   </button>
+
+  <!-- Modal -->
+  <form action="/add-item" method="post">
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel1">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label  class="form-label">Name</label>
+            <input name="name" type="text" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Description</label>
+            <input name="description" type="text" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Price</label>
+            <input name="price" type="number" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Status</label>
+            <select class="form-select" name="itemStatus">
+              <option th:value="${status}"
+                      th:each="status : ${statuses}"
+                      th:text="${status}"
+              ></option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button class="btn btn-primary">ADD ITEM</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </form>
+
   <h1 class="text-center">Electronic shop items</h1>
   <div class="row row-cols-1 row-cols-md-3 mb-3 text-center ">
     <div th:each="item : ${zattar}" class="col">
@@ -28,37 +70,6 @@
   </div>
 </div>
 
-<!-- Modal -->
-<form action="/add-item" method="post">
-  <div class="modal fade" id="addItemModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="mb-3">
-            <label  class="form-label">Name</label>
-            <input name="name" type="text" class="form-control">
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Description</label>
-            <input name="description" type="text" class="form-control">
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Price</label>
-            <input name="price" type="number" class="form-control">
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button class="btn btn-primary">ADD ITEM</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</form>
 </div>
 <div layout:fragment="others">
   <h1>Здесь могла бы быть ваша реклама!!!!!</h1>
